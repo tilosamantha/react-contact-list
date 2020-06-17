@@ -1,17 +1,22 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import * as serviceWorker from './serviceWorker';
-
-ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
-);
-
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
-serviceWorker.unregister();
+import React, { Component } from 'react';
+import { Header } from 'semantic-ui-react';
+import Contacts from './components/contacts/Contacts';
+class App extends Component {
+  state = { contacts: [
+    { id: 1, firstName: 'John', phone: '123-123-1233'},
+    { id: 2, firstName: 'Sally', phone: '123-333-1233'},
+    { id: 3, firstName: 'Alex', phone: '123-125-1233'},
+  ]}
+  render() {
+    const { contacts } = this.state
+    return(
+      <div>
+        <Header size="huge" color='blue' textAlign='center'>
+          Contact list
+        </Header>
+        <Contacts contacts={contacts} />
+      </div>
+    )
+  }
+}
+export default App;
